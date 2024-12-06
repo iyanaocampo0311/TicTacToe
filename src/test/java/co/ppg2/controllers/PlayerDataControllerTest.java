@@ -1,7 +1,6 @@
 package co.ppg2.controllers;
 
 
-import co.ppg2.controllers.PlayerDataController;
 import co.ppg2.model.Player;
 import org.junit.jupiter.api.Test;
 

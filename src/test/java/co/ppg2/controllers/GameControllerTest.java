@@ -46,6 +46,7 @@ class GameControllerTest {
         assertFalse(gameController.isFull());
     }
 
+    // TODO: Add test case for when the board is full
     @Test
     void testIsWon() {
         // Set up a winning state for 'X'
@@ -57,6 +58,7 @@ class GameControllerTest {
         // Set up a non-winning state for 'O'
         assertFalse(gameController.isWon('O'));
     }
+    // TODO: Add test cases for diagonal and vertical wins
 
     @Test
     void testSetAndGetCell() {
@@ -83,7 +85,13 @@ class GameControllerTest {
         gameController.getCell(1, 1).setToken('O');
         gameController.getCell(1, 2).setToken('O');
         assertEquals(playerO, gameController.getWinner('O'));
+        // TODO: Add test case for when there is no winner
     }
+    // TODO: Add test for switching turns after a move
+
+    // TODO: Add test for invalid moves (e.g., placing a token on an occupied cell)
+
+    // TODO: Add test for game over scenarios (win, draw)
 }
 
 

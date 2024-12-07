@@ -11,6 +11,7 @@ import java.util.List;
 
 public class LeaderboardPopup {
     public static void showLeaderboard(List<Player> players) {
+        // TODO: Add null check for players list
         Stage popupStage = new Stage();
         VBox vbox = new VBox();
         Label label = new Label("Leaderboard:");
@@ -39,7 +40,13 @@ public class LeaderboardPopup {
         popupStage.setTitle("Leaderboard");
         popupStage.setScene(scene);
         popupStage.showAndWait();
+
+        // TODO: Consider adding a close button to dismiss the leaderboard
+        // TODO: Consider adding styling to make the leaderboard more visually appealing
     }
+
+    // TODO: Consider adding a method to update the leaderboard without creating a new window
+    // TODO: Consider adding pagination if the number of players grows large
 }
 
 

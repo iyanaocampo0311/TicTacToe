@@ -45,20 +45,5 @@ class GameTimerTest {
         assertEquals(0.0, gameTimer.getAverageTimePerMove("PlayerX"),
                 "Average time per move should be 0.0 before the timer starts");
     }
-    // TODO: Add test for multiple start and cancel cycles
-
-    // TODO: Add test for switching players during the game
-
-    // TODO: Add test for very short moves (less than a second)
-
-    // TODO: Add test for very long moves (several minutes)
-
-    // TODO: Add test for concurrent access to the timer by multiple threads
-
-    // TODO: Add test for edge cases like empty player names or null values
-
-    // TODO: Add test for resetting the timer between games
-
-    // TODO: Add test for calculating total game time
 }
 

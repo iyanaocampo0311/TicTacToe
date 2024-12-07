@@ -19,6 +19,7 @@ public class CellEmpty extends CellBase {
 
 
     public CellEmpty(GameController gameController, GameView gameView, int row, int col) {
+        // TODO: Add null checks for gameController and gameView
         this.gameController = gameController;
         this.gameView = gameView;
         this.row = row;
@@ -41,6 +42,8 @@ public class CellEmpty extends CellBase {
 
 
         this.setOnMouseClicked(e -> handleMouseClick());
+
+        // TODO: Consider adding hover effect for better user experience
     }
 
 
@@ -53,6 +56,7 @@ public class CellEmpty extends CellBase {
         } else if (token == 'O') {
             this.getChildren().add(new CellO());
         }
+        // TODO: Consider adding animation for token placement
     }
     private void handleMouseClick() {
         if (token == ' ') {
@@ -71,6 +75,8 @@ public class CellEmpty extends CellBase {
                 gameView.updateLabel(gameController.getCurrentPlayer().getUsername() + "'s turn");
             }
         }
+        // TODO: Consider adding feedback when clicking an already occupied cell
     }
+    // TODO: Consider adding a method to reset the cell for a new game
 }
 

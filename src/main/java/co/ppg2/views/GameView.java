@@ -15,6 +15,7 @@ public class GameView {
     private final Stage primaryStage;
     private LabelInstructions labelInstructions;
     public GameView(GameController gameController, Stage primaryStage) {
+        // TODO: Add null checks for gameController and primaryStage
         this.gameController = gameController;
         this.primaryStage = primaryStage;
     }
@@ -44,10 +45,13 @@ public class GameView {
         primaryStage.setTitle("TicTacToe");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        // TODO: Consider adding a method to reset the game board for a new game
     }
 
 
     public void updateLabel(String text) {
+        // TODO: Add null check for text
         labelInstructions.setText(text);
     }
 

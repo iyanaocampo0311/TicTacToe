@@ -20,8 +20,7 @@ public class LeaderboardPopup {
 
         ListView<String> listView = new ListView<>();
 
-
-
+        // TODO: use a table view instead of list view to separate each of the stat information
 
         players.stream()
                 .sorted((p1, p2) -> Integer.compare(p2.getWins(), p1.getWins()))
@@ -31,8 +30,7 @@ public class LeaderboardPopup {
                     listView.getItems().add(player + String.format(", Avg Time: %.2f seconds", avgTime));
                 });
 
-
-
+        // TODO: add options from the leaderboard to quit the game or start a new game with the same users
 
         vbox.getChildren().addAll(label, listView);
         Scene scene = new Scene(vbox, 300, 300);

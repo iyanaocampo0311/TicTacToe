@@ -23,7 +23,7 @@ public class GameView {
     public void launchGame() {
         GridPane gridPane = new GridPane();
         gridPane.setGridLinesVisible(true);
-        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setAlignment(Pos.CENTER); // Horizontally and vertically align the board
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -34,7 +34,6 @@ public class GameView {
         }
 
         labelInstructions = new LabelInstructions(gameController.getCurrentPlayer().getUsername() + "'s turn");
-        labelInstructions.setAlignment(Pos.CENTER);
         labelInstructions.setStyle("-fx-font-size: 24px;");
 
         borderPane = new BorderPane();
@@ -42,7 +41,9 @@ public class GameView {
         borderPane.setTop(labelInstructions);
         BorderPane.setAlignment(labelInstructions, Pos.CENTER); // Center the label at the top
 
-        Scene scene = new Scene(borderPane, 500, 500);
+        // TODO: show the timer for each user as they are playing
+
+        Scene scene = new Scene(borderPane, 500, 500); // Make the window bigger initially
         primaryStage.setTitle("TicTacToe");
         primaryStage.setScene(scene);
         primaryStage.show();

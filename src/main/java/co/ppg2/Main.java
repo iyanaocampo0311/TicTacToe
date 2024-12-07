@@ -28,21 +28,12 @@ public class Main extends Application {
         Player playerX = PlayerPopup.showPopup("Player X");
         Player playerO = PlayerPopup.showPopup("Player O");
 
-
-
-
         // Find or add Player X and Player O in the players list
         playerX = findOrAddPlayer(playerX.getUsername());
         playerO = findOrAddPlayer(playerO.getUsername());
 
-
-
-
         // Initialize shared GameTimer
         gameTimer = new GameTimer();
-
-
-
 
         // Initialize GameController and GameView
         gameController = new GameController(playerX, playerO);
@@ -50,21 +41,12 @@ public class Main extends Application {
         gameView = new GameView(gameController, primaryStage);
         gameController.setGameView(gameView);
 
-
-
-
         // Launch the game view
         gameView.launchGame();
-
-
-
 
         // Start the timer for Player X
         gameTimer.startTimer(playerX.getUsername());
     }
-
-
-
 
     private Player findOrAddPlayer(String username) {
         for (Player player : players) {
@@ -78,6 +60,3 @@ public class Main extends Application {
         return newPlayer;
     }
 }
-
-
-

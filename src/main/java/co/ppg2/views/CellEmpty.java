@@ -55,6 +55,7 @@ public class CellEmpty extends CellBase {
         }
     }
     private void handleMouseClick() {
+        System.out.println(gameController.getWhoseTurn());
         if (token == ' ') {
             char currentPlayerToken = gameController.getWhoseTurn();
             gameController.setCell(row, col, this); // Update game state
@@ -70,6 +71,12 @@ public class CellEmpty extends CellBase {
                 gameController.switchTurn();
                 gameView.updateLabel(gameController.getCurrentPlayer().getUsername() + "'s turn");
             }
+        }
+
+        if (gameController.getWhoseTurn() == 'X') {
+            gameView.xTurn();
+        } else if (gameController.getWhoseTurn() == 'O') {
+            gameView.oTurn();
         }
     }
 }

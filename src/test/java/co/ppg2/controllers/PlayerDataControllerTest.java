@@ -1,14 +1,8 @@
 package co.ppg2.controllers;
 
-
-import co.ppg2.controllers.PlayerDataController;
 import co.ppg2.model.Player;
 import org.junit.jupiter.api.Test;
-
-
 import java.util.ArrayList;
-
-
 import static org.junit.jupiter.api.Assertions.*;
 
 

@@ -1,5 +1,7 @@
 package co.ppg2.controllers;
 
+//TODO: Remove excess white space to reduce scrolling
+
 import co.ppg2.services.GameTimer;
 import co.ppg2.model.Player;
 import co.ppg2.views.CellBase;

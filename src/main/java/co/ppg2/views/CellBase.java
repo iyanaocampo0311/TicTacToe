@@ -9,7 +9,7 @@ public abstract class CellBase extends Pane {
     }
 
     public abstract void setToken(char token);
-}
+} 
 
 
 

@@ -1,7 +1,5 @@
 package co.ppg2.services;
 
-
-import co.ppg2.services.GameTimer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -6,6 +6,7 @@ module co.ppg2 {
     requires javafx.media;
     requires jdk.jsobject;
     requires java.desktop;
+    requires java.logging;
 
     exports co.ppg2;
     exports co.ppg2.views;

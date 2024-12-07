@@ -6,6 +6,7 @@ import java.util.Map;
 
 
 public class GameTimer implements Runnable {
+    // TODO: Consider using ConcurrentHashMap for thread-safety
     private final Map<String, Long> playerTotalTime; // Total time spent by each player
     private final Map<String, Integer> playerMoves; // Number of moves made by each player
     private String currentPlayer; // Current player whose time is being tracked
@@ -19,6 +20,7 @@ public class GameTimer implements Runnable {
 
     // Starts the timer for the current player
     public synchronized void startTimer(String playerName) {
+        // TODO: Add null check for playerName
         if (running) cancelTimer();
         currentPlayer = playerName;
         startTime = System.currentTimeMillis();
@@ -37,6 +39,7 @@ public class GameTimer implements Runnable {
 
     // Computes the average time per move for a player
     public synchronized double getAverageTimePerMove(String playerName) {
+        // TODO: Add null check for playerName
         long totalTime = playerTotalTime.getOrDefault(playerName, 0L);
         int moves = playerMoves.getOrDefault(playerName, 0);
         return moves == 0 ? 0.0 : (totalTime / (double) moves) / 1000.0; // Convert to seconds
@@ -48,13 +51,17 @@ public class GameTimer implements Runnable {
             try {
                 Thread.sleep(500); // Update every half second if needed
                 Platform.runLater(() -> {
+                    // TODO: Implement GUI update logic here when needed
                     // Update GUI components if needed in future
                 });
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
+                // TODO: Consider logging this interruption
             }
         }
     }
+    // TODO: Consider adding a method to reset timer statistics
+    // TODO: Consider adding a method to get total time for a player
 }
 
 

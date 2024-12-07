@@ -12,6 +12,7 @@ public class CellView extends StackPane {
     private final int col;
     private final GameController gameController;
     public CellView(int row, int col, GameController gameController) {
+        // TODO: Add null check for gameController
         this.row = row;
         this.col = col;
         this.gameController = gameController;
@@ -25,6 +26,8 @@ public class CellView extends StackPane {
 
         // Set action for button click
         button.setOnAction(e -> handleClick());
+
+        // TODO: Consider adding a method to reset the cell for a new game
     }
 
 
@@ -52,8 +55,11 @@ public class CellView extends StackPane {
             } else {
                 // Switch player turn and prepare for the next move
                 gameController.switchTurn();
+                // TODO: Update the UI to indicate the next player's turn
             }
         }
+        // TODO: Consider adding visual feedback when clicking an already occupied cell
     }
+    // TODO: Consider adding a method to disable the cell after the game ends
 }
 

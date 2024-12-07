@@ -22,6 +22,7 @@ public class GameController {
         this.playerX = playerX;
         this.playerO = playerO;
         this.players = PlayerDataController.loadPlayers(); // Load existing players
+        // TODO: Consider handling potential exceptions when loading players
     }
 
 
@@ -59,6 +60,7 @@ public class GameController {
 
 
     public boolean isWon(char token) {
+        // TODO: Refactor this method to reduce code duplication and improve readability
         for (int i = 0; i < 3; i++) {
             if (cells[i][0].getToken() == token && cells[i][1].getToken() == token && cells[i][2].getToken() == token) {
                 return true;
@@ -155,7 +157,9 @@ public class GameController {
 
 
         LeaderboardPopup.showLeaderboard(players);
+        // TODO: Consider moving leaderboard display logic to a separate method or class
     }
+    // TODO: Add a method to reset the game state for a new game
 }
 
 

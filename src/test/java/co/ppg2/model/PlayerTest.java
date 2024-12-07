@@ -1,6 +1,5 @@
 package co.ppg2.model;
 
-import co.ppg2.model.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

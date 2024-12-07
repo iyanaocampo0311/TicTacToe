@@ -20,24 +20,24 @@ public class Player implements Serializable {
     public int getWins() {
         return wins;
     }
+
     public int getLosses() {
         return losses;
     }
 
     public void incrementWins() {
         this.wins++;
+        // TODO: Check if wins can go below zero
     }
+
     public void incrementLosses() {
         this.losses++;
+        // TODO: Check if losses can go below zero
     }
 
     @Override
     public String toString() {
         return username + " - Wins: " + wins + ", Losses: " + losses;
+        // TODO: Maybe show win percentage or other details
     }
 }
-
-
-
-
-

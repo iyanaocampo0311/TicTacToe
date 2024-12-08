@@ -39,7 +39,7 @@ public class GameView {
         borderPane.setCenter(gridPane);
         borderPane.setBottom(labelInstructions);
 
-
+        // TODO: change the dimensions of the window so the user can see the full game without resizing it.
         Scene scene = new Scene(borderPane, 450, 170);
         primaryStage.setTitle("TicTacToe");
         primaryStage.setScene(scene);

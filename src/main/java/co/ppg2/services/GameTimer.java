@@ -59,7 +59,7 @@ public class GameTimer implements Runnable {
 
 
 
-
+            // TODO: maybe add a in game clock for more multithreading use
 
 
 

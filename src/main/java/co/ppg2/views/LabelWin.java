@@ -5,8 +5,6 @@ package co.ppg2.views;
  * Extends {@link LabelBase} and overrides its default styling to indicate a win.
  */
 public class LabelWin extends LabelBase {
-    // Message to be displayed when a player wins
-    public String winMessage;
 
     /**
      * Constructs a LabelWin instance with the specified text.

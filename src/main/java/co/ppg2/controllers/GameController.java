@@ -176,6 +176,8 @@ public class GameController {
             }
         }
 
+// TODO What should be improved: The updateLeaderboard method mixes leaderboard update logic with UI generation, which violates the single-responsibility principle.
+      //TODO How it should be improved:  Split this method into two: one for updating player stats and another for generating the leaderboard display.
         PlayerDataController.savePlayers(players);
 
         // Build leaderboard details

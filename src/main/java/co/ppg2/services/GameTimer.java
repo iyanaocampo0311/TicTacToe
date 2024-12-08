@@ -45,7 +45,8 @@ public class GameTimer implements Runnable {
         playerMoves = new HashMap<>();
         running = false;
     }
-
+//TODO What you should improve: playerTotalTime and playerMoves are modified in synchronized methods, but the run method isn't synchronized, which might lead to inconsistent states in multithreaded environments.
+    //TODO How to improve it: Wrap access to shared resources (playerTotalTime, playerMoves) in synchronized blocks or use a thread-safe structure like ConcurrentHashMap. And this will ensure thread saftey.
     /**
      * Starts the timer for a specified player. If a timer is already running, it will be stopped.
      *

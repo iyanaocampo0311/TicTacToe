@@ -20,7 +20,6 @@ public class GameController {
     private GameTimer gameTimer;
     private GameView gameView;
     private final ArrayList<Player> players;
-
     /**
      * Constructor for GameController.
      *
@@ -176,6 +175,8 @@ public class GameController {
                 player.incrementLosses();
             }
         }
+// TODO What should be improved: The updateLeaderboard method mixes leaderboard update logic with UI generation, which violates the single-responsibility principle.
+        //TODO How it should be improved:  Split this method into two: one for updating player stats and another for generating the leaderboard display.
 
         PlayerDataController.savePlayers(players);
 

@@ -25,7 +25,7 @@ public class PlayerDataController {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
             oos.writeObject(players);
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: (ag) Consider logging the exception for better debugging, not just printing the stack trace.
         }
     }
 
@@ -40,7 +40,7 @@ public class PlayerDataController {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
             players = (ArrayList<Player>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: (ag) Consider logging the exception for better debugging.
         }
         return players;
     }

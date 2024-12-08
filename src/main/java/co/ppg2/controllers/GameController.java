@@ -30,7 +30,7 @@ public class GameController {
     public GameController(Player playerX, Player playerO) {
         this.playerX = playerX;
         this.playerO = playerO;
-        this.players = PlayerDataController.loadPlayers();
+        this.players = PlayerDataController.loadPlayers(); // TODO: (ag) Check if PlayerDataController exists and can load players correctly.
     }
 
     /**
@@ -56,7 +56,7 @@ public class GameController {
      */
     public void switchTurn() {
         if (gameTimer != null) {
-            gameTimer.cancelTimer();
+            gameTimer.cancelTimer(); // TODO: (ag) Ensure cancelTimer() exists in GameTimer.
             whoseTurn = (whoseTurn == 'X') ? 'O' : 'X';
             gameTimer.startTimer(getCurrentPlayer().getUsername());
         }
@@ -177,7 +177,7 @@ public class GameController {
             }
         }
 
-        PlayerDataController.savePlayers(players);
+        PlayerDataController.savePlayers(players); // TODO: (ag) Ensure PlayerDataController is working correctly and can save players.
 
         // Build leaderboard details
         StringBuilder leaderboardDetails = new StringBuilder();

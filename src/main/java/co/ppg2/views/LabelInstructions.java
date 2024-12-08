@@ -13,6 +13,6 @@ public class LabelInstructions extends LabelBase {
      */
     public LabelInstructions(String text) {
         super(text);
-        setStyle("-fx-background-color: lightgreen;");
+        setStyle("-fx-background-color: lightgreen;"); // TODO: If you plan on adding future UI styles, adding a separate CSS file would be best for maintainability
     }
 }

@@ -35,7 +35,7 @@ public class LeaderboardPopup {
                 .limit(10)
                 .forEach(player -> {
                     double avgTime = Main.gameTimer.getAverageTimePerMove(player.getUsername()); // Get average time
-                    listView.getItems().add(player + String.format(", Avg Time: %.2f seconds", avgTime));
+                    listView.getItems().add(player + String.format(", Avg Time: %.2f seconds", avgTime)); // TODO: You could use another method that can return string representations of the player for better clarity
                 });
 
         vbox.getChildren().addAll(label, listView);

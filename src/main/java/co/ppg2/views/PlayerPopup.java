@@ -40,7 +40,7 @@ public class PlayerPopup extends Parent {
         popupStage.setScene(scene);
         popupStage.showAndWait();
         return new Player(usernameField.getText()); // Create and return player object
-    }
+    } // TODO: You could consider making sure the player enters a valid username or make it so that the popup doesn't appear when a player doesn't enter anything as their username
 
     @Override
     public Node getStyleableNode() {

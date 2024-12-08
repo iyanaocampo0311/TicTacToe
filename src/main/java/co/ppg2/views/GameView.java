@@ -42,13 +42,13 @@ public class GameView {
             }
         }
 
-        labelInstructions = new LabelInstructions(gameController.getCurrentPlayer().getUsername() + "'s turn");
+        labelInstructions = new LabelInstructions(gameController.getCurrentPlayer().getUsername() + "'s turn"); // TODO: Possibly ensure LabelInstructions is defined clearly elsewhere
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(gridPane);
         borderPane.setBottom(labelInstructions);
 
-        Scene scene = new Scene(borderPane, 450, 170);
+        Scene scene = new Scene(borderPane, 450, 170); // TODO: (ag) You can consider making the panel bigger for a better gaming experience
         primaryStage.setTitle("TicTacToe");
         primaryStage.setScene(scene);
         primaryStage.show();

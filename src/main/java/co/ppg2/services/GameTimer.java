@@ -4,13 +4,13 @@ import javafx.application.Platform;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class GameTimer implements Runnable {
     private final Map<String, Long> playerTotalTime; // Total time spent by each player
     private final Map<String, Integer> playerMoves; // Number of moves made by each player
     private String currentPlayer; // Current player whose time is being tracked
     private long startTime; // Start time of the current player's move
     private boolean running; // Timer state
+
     public GameTimer() {
         playerTotalTime = new HashMap<>();
         playerMoves = new HashMap<>();
@@ -48,7 +48,7 @@ public class GameTimer implements Runnable {
             try {
                 Thread.sleep(500); // Update every half second if needed
                 Platform.runLater(() -> {
-                    // Update GUI components if needed in future
+                    // TODO: Update GUI components if needed in the future
                 });
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
@@ -56,12 +56,3 @@ public class GameTimer implements Runnable {
         }
     }
 }
-
-
-
-
-
-
-
-
-

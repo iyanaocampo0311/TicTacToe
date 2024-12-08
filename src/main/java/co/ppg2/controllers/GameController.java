@@ -9,13 +9,21 @@ import java.util.ArrayList;
 
 
 public class GameController {
+    public GameController(String usernameX, String usernameO) {
+        if (usernameX == null || usernameX.trim().isEmpty() || usernameO == null || usernameO.trim().isEmpty()) {
+            throw new IllegalArgumentException("Both players must enter a valid username.");
+        } //makes sure the player must enter a username to proceed
+        this.playerX = new Player(usernameX);
+        this.playerO = new Player(usernameO);
+
+    }
     private char whoseTurn = 'X';
     private final CellBase[][] cells = new CellBase[3][3];
     private final Player playerX;
     private final Player playerO;
     private GameTimer gameTimer;
     private GameView gameView;
-    private final ArrayList<Player> players;
+    private ArrayList<Player> players = null;
 
 
     public GameController(Player playerX, Player playerO) {
@@ -35,6 +43,9 @@ public class GameController {
     }
 
 
+    /**
+     * Switches the turn to the other player and starts their timer
+     */ //javadoc comment example
     public void switchTurn() {
         if (gameTimer != null) {
             gameTimer.cancelTimer(); // Stop the timer for the current player
@@ -105,18 +116,15 @@ public class GameController {
 
 
 
-
     public GameView getGameView() {
         return gameView;
     }
 
 
 
-
     public Player getWinner(char token) {
         return (token == 'X') ? playerX : playerO;
     }
-
 
 
 
@@ -137,10 +145,7 @@ public class GameController {
 
 
 
-
         PlayerDataController.savePlayers(players);
-
-
 
 
         // Show leaderboard with average time per move
@@ -152,10 +157,14 @@ public class GameController {
         }
 
 
-
-
         LeaderboardPopup.showLeaderboard(players);
     }
+    //TODO: could make a basic utility method to check if a cell in the 2D array is empty
+
+    public boolean isCellEmpty(int row, int col) {
+        return cells[row][col] == null || cells[row][col].getToken() == ' ';
+    }
+//TODO: suggestion: remove unnecessary blank lines to improve readability
 }
 
 

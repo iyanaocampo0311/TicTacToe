@@ -41,6 +41,7 @@ public class GameTimer implements Runnable {
         int moves = playerMoves.getOrDefault(playerName, 0);
         return moves == 0 ? 0.0 : (totalTime / (double) moves) / 1000.0; // Convert to seconds
     }
+    //TODO: Could add a pause button to pause the timer and resume once the button is pressed again. Would need to add the button in GameView
 
     @Override
     public void run() {
@@ -50,6 +51,9 @@ public class GameTimer implements Runnable {
                 Platform.runLater(() -> {
                     // Update GUI components if needed in future
                 });
+
+                // simple add to log loop status
+                System.out.println("Timer is running..."); // log message in each iteration
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }

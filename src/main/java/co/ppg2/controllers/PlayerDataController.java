@@ -20,10 +20,16 @@ public class PlayerDataController {
 
     public static ArrayList<Player> loadPlayers() {
         ArrayList<Player> players = new ArrayList<>();
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
-            players = (ArrayList<Player>) ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        File file = new File(FILE_NAME);
+        //TODO: consider adding conditional to check if file exists
+        if (file.exists()) {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
+                players = (ArrayList<Player>) ois.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Player file does not exist. Starting with an empty player list.");
         }
         return players;
     }

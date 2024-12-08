@@ -61,6 +61,12 @@ public class Main extends Application {
 
         // Start the timer for Player X
         gameTimer.startTimer(playerX.getUsername());
+
+        // add an exit for the application
+        primaryStage.setOnCloseRequest(event -> {
+            System.out.println("Game is closing...");
+            System.exit(0);
+        });
     }
 
 

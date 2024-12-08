@@ -5,6 +5,8 @@ import co.ppg2.controllers.GameController;
 import co.ppg2.controllers.PlayerDataController;
 import co.ppg2.model.Player;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;  // Importing Alert class
+import javafx.scene.control.Alert.AlertType;  // Importing AlertType class
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -19,8 +21,15 @@ public class GameView {
         this.primaryStage = primaryStage;
     }
     public void launchGame() {
+        // Validate player usernames before launching the game
+        if (gameController.getCurrentPlayer().getUsername().isEmpty() ||
+                gameController.getWinner('O').getUsername().isEmpty()) {
+            showErrorPopup("Both players must enter a username to start the game.");
+            return; // Stop further execution if validation fails; popup to make sure plyer enters a name
+        }
         GridPane gridPane = new GridPane();
         gridPane.setGridLinesVisible(true);
+
 
 
         for (int i = 0; i < 3; i++) {
@@ -40,18 +49,26 @@ public class GameView {
         borderPane.setBottom(labelInstructions);
 
 
-        Scene scene = new Scene(borderPane, 450, 170);
+        Scene scene = new Scene(borderPane, 800, 600); //changed dimensions of window
         primaryStage.setTitle("TicTacToe");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
+    // Method to show the error popup
+    private void showErrorPopup(String message) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
     public void updateLabel(String text) {
         labelInstructions.setText(text);
     }
 
-
+//TODO: Possibly make it so this message pops up in the middle of the screen or is larger
     public void handleTie() {
         updateLabel("It is a tie!");
         LeaderboardPopup.showLeaderboard(PlayerDataController.loadPlayers());
@@ -66,5 +83,6 @@ public class GameView {
         gameController.updateLeaderboard(token);
     }
 }
+
 
 

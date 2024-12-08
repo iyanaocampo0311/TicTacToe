@@ -23,6 +23,7 @@ public class GameView {
         gridPane.setGridLinesVisible(true);
 
 
+
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 CellEmpty cell = new CellEmpty(gameController, this, i, j);
@@ -30,6 +31,7 @@ public class GameView {
                 gridPane.add(cell, j, i);
             }
         }
+
 
 
         labelInstructions = new LabelInstructions(gameController.getCurrentPlayer().getUsername() + "'s turn");

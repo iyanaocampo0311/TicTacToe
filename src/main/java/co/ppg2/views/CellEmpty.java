@@ -9,7 +9,6 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.BorderWidths;
 
-
 public class CellEmpty extends CellBase {
     private static final int CELL_SIZE = 100;
     private final int row;
@@ -17,18 +16,15 @@ public class CellEmpty extends CellBase {
     private final GameController gameController;
     private final GameView gameView;
 
-
     public CellEmpty(GameController gameController, GameView gameView, int row, int col) {
         this.gameController = gameController;
         this.gameView = gameView;
         this.row = row;
         this.col = col;
 
-
         Rectangle rect = new Rectangle(CELL_SIZE, CELL_SIZE);
         rect.setFill(Color.LIGHTGRAY);
         this.getChildren().add(rect);
-
 
         this.setBorder(new Border(
                 new BorderStroke(
@@ -39,10 +35,8 @@ public class CellEmpty extends CellBase {
                 )
         ));
 
-
         this.setOnMouseClicked(e -> handleMouseClick());
     }
-
 
     @Override
     public void setToken(char token) {
@@ -54,23 +48,29 @@ public class CellEmpty extends CellBase {
             this.getChildren().add(new CellO());
         }
     }
+
     private void handleMouseClick() {
+        // TODO: Check if the cell is empty before updating (to avoid overwriting)
         if (token == ' ') {
             char currentPlayerToken = gameController.getWhoseTurn();
             gameController.setCell(row, col, this); // Update game state
-            setToken(currentPlayerToken);  // Update display
+            setToken(currentPlayerToken);  // Show the player's move
 
+            // TODO: Make sure the game stops if someone wins or ties, so no more moves are made
 
-            // Check for win or tie condition
+            // Check if the current player has won
             if (gameController.isWon(currentPlayerToken)) {
-                gameView.handleGameOver(currentPlayerToken);
+                gameView.handleGameOver(currentPlayerToken); // Show game over screen
             } else if (gameController.isFull()) {
-                gameView.handleTie();
+                gameView.handleTie(); // Show tie screen if the board is full
             } else {
-                gameController.switchTurn();
+                gameController.switchTurn(); // Switch to the next player's turn
                 gameView.updateLabel(gameController.getCurrentPlayer().getUsername() + "'s turn");
             }
         }
     }
-}
 
+    // TODO: Add a way to highlight which player's turn it is (e.g., color the border or token)
+    // TODO: Add a method to reset the cell when the game restarts
+    // TODO: Make sure no moves can be made after the game is over
+}

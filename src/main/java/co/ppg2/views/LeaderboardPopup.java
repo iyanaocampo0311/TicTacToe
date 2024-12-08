@@ -1,33 +1,35 @@
 package co.ppg2.views;
 
 import co.ppg2.model.Player;
+import co.ppg2.Main;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import java.util.List;
 
-public class PlayerPopup {
-    public static Player showPopup(String playerLabel) {
+public class LeaderboardPopup {
+    public static void showLeaderboard(List<Player> players) {
         Stage popupStage = new Stage();
         VBox vbox = new VBox();
-        Label label = new Label("Enter username for " + playerLabel + ":");
-        TextField usernameField = new TextField();
-        Button submitButton = new Button("Submit");
+        Label label = new Label("Leaderboard:");
 
-        submitButton.setOnAction(e -> {
-            if (!usernameField.getText().isEmpty()) {
-                popupStage.close();
-            }
-        });
+        ListView<String> listView = new ListView<>();
 
-        vbox.getChildren().addAll(label, usernameField, submitButton);
-        Scene scene = new Scene(vbox, 300, 150);
-        popupStage.setTitle(playerLabel + " Setup");
+        // TODO: Add a check if there are no players
+        players.stream()
+                .sorted((p1, p2) -> Integer.compare(p2.getWins(), p1.getWins())) // Sort players by wins
+                .limit(10) // Show only top 10 players
+                .forEach(player -> {
+                    double avgTime = Main.gameTimer.getAverageTimePerMove(player.getUsername()); // Get average time
+                    listView.getItems().add(player + String.format(", Avg Time: %.2f seconds", avgTime));
+                });
+
+        vbox.getChildren().addAll(label, listView);
+        Scene scene = new Scene(vbox, 300, 300);
+        popupStage.setTitle("Leaderboard");
         popupStage.setScene(scene);
         popupStage.showAndWait();
-
-        // TODO: Check if username is empty and show an error if it is
-        // TODO: Add validation for valid username input
-        return new Player(usernameField.getText()); // Create and return player object
     }
 }

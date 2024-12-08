@@ -7,6 +7,7 @@ import co.ppg2.views.GameView;
 import co.ppg2.views.LeaderboardPopup;
 import java.util.ArrayList;
 
+    //TODO: Write a JavaDoc explaining the primary function of the class
 
 public class GameController {
     private char whoseTurn = 'X';
@@ -24,16 +25,20 @@ public class GameController {
         this.players = PlayerDataController.loadPlayers(); // Load existing players
     }
 
+    //TODO: Create a JavaDoc for this getter method
 
     public char getWhoseTurn() {
         return whoseTurn;
     }
 
+    //TODO: Create a JavaDoc for this getter method
+    //TODO: Incorporate an invalid line of whoseTurn
 
     public Player getCurrentPlayer() {
         return (whoseTurn == 'X') ? playerX : playerO;
     }
 
+    //TODO: Validate gameTimer
 
     public void switchTurn() {
         if (gameTimer != null) {
@@ -55,8 +60,7 @@ public class GameController {
         return true;
     }
 
-
-
+    //TODO: Explain the logic behind isWon with columns, rows, and diagonals
 
     public boolean isWon(char token) {
         for (int i = 0; i < 3; i++) {
@@ -76,42 +80,38 @@ public class GameController {
     }
 
 
-
+    //TODO: Create a JavaDoc for this setter method
 
     public void setCell(int row, int col, CellBase cell) {
         cells[row][col] = cell;
     }
 
 
-
+    //TODO: Create a JavaDoc for this setter method
 
     public void setGameTimer(GameTimer gameTimer) {
         this.gameTimer = gameTimer;
     }
 
-
-
+    //TODO: Create a JavaDoc for this getter method
 
     public CellBase getCell(int row, int col) {
         return cells[row][col];
     }
 
-
-
+    //TODO: Create a JavaDoc for this setter method
 
     public void setGameView(GameView gameView) {
         this.gameView = gameView;
     }
 
-
-
+    //TODO: Create a JavaDoc for this getter method
 
     public GameView getGameView() {
         return gameView;
     }
 
-
-
+    //TODO: Create a JavaDoc for this getter method
 
     public Player getWinner(char token) {
         return (token == 'X') ? playerX : playerO;

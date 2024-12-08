@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import java.util.HashMap;
 import java.util.Map;
 
+//TODO: Write a JavaDoc explaining the primary function of the class
 
 public class GameTimer implements Runnable {
     private final Map<String, Long> playerTotalTime; // Total time spent by each player
@@ -26,6 +27,8 @@ public class GameTimer implements Runnable {
         new Thread(this).start(); // Start the timer thread
     }
 
+    //TODO: Comment on when or which circumstances would require cancelTimer
+
     // Stops the timer and records the elapsed time
     public synchronized void cancelTimer() {
         if (!running) return;
@@ -35,12 +38,16 @@ public class GameTimer implements Runnable {
         running = false;
     }
 
+    //TODO: Consider when a player has no moves
+
     // Computes the average time per move for a player
     public synchronized double getAverageTimePerMove(String playerName) {
         long totalTime = playerTotalTime.getOrDefault(playerName, 0L);
         int moves = playerMoves.getOrDefault(playerName, 0);
         return moves == 0 ? 0.0 : (totalTime / (double) moves) / 1000.0; // Convert to seconds
     }
+
+    //TODO: Further the multithreading with something processing time such as an in game clock
 
     @Override
     public void run() {

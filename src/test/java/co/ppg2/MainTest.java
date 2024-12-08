@@ -11,3 +11,5 @@ class MainTest {
         assertDoesNotThrow(() -> Main.main(args), "Main method should run without throwing exceptions");
     }
 }
+
+

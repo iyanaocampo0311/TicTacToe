@@ -5,13 +5,9 @@ import co.ppg2.model.Player;
 import co.ppg2.views.CellBase;
 import co.ppg2.views.GameView;
 import co.ppg2.views.LeaderboardPopup;
-
 import java.util.ArrayList;
 
-/**
- * The GameController class handles the logic and state of the Tic-Tac-Toe game,
- * including player turns, game board, win conditions, and leaderboard updates.
- */
+
 public class GameController {
     private char whoseTurn = 'X';
     private final CellBase[][] cells = new CellBase[3][3];
@@ -21,52 +17,33 @@ public class GameController {
     private GameView gameView;
     private final ArrayList<Player> players;
 
-    /**
-     * Constructor for GameController.
-     *
-     * @param playerX Player representing X
-     * @param playerO Player representing O
-     */
+
     public GameController(Player playerX, Player playerO) {
         this.playerX = playerX;
         this.playerO = playerO;
-        this.players = PlayerDataController.loadPlayers();
+        this.players = PlayerDataController.loadPlayers(); // Load existing players
     }
 
-    /**
-     * Gets the current player's token.
-     *
-     * @return The token of the current player ('X' or 'O')
-     */
+
     public char getWhoseTurn() {
         return whoseTurn;
     }
 
-    /**
-     * Gets the current player based on whose turn it is.
-     *
-     * @return The current player
-     */
+
     public Player getCurrentPlayer() {
         return (whoseTurn == 'X') ? playerX : playerO;
     }
 
-    /**
-     * Switches the turn to the next player and resets their timer.
-     */
+
     public void switchTurn() {
         if (gameTimer != null) {
-            gameTimer.cancelTimer();
+            gameTimer.cancelTimer(); // Stop the timer for the current player
             whoseTurn = (whoseTurn == 'X') ? 'O' : 'X';
-            gameTimer.startTimer(getCurrentPlayer().getUsername());
+            gameTimer.startTimer(getCurrentPlayer().getUsername()); // Start the timer for the next player
         }
     }
 
-    /**
-     * Checks if the game board is full.
-     *
-     * @return True if the board is full, otherwise false
-     */
+
     public boolean isFull() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -78,12 +55,9 @@ public class GameController {
         return true;
     }
 
-    /**
-     * Checks if the given token has won the game.
-     *
-     * @param token The token to check ('X' or 'O')
-     * @return True if the token has won, otherwise false
-     */
+
+
+
     public boolean isWon(char token) {
         for (int i = 0; i < 3; i++) {
             if (cells[i][0].getToken() == token && cells[i][1].getToken() == token && cells[i][2].getToken() == token) {
@@ -101,73 +75,57 @@ public class GameController {
         return cells[0][2].getToken() == token && cells[1][1].getToken() == token && cells[2][0].getToken() == token;
     }
 
-    /**
-     * Sets the cell at the given row and column with the specified CellBase instance.
-     *
-     * @param row  The row of the cell
-     * @param col  The column of the cell
-     * @param cell The cell to set
-     */
+
+
+
     public void setCell(int row, int col, CellBase cell) {
         cells[row][col] = cell;
     }
 
-    /**
-     * Sets the GameTimer instance for the controller.
-     *
-     * @param gameTimer The GameTimer to set
-     */
+
+
+
     public void setGameTimer(GameTimer gameTimer) {
         this.gameTimer = gameTimer;
     }
 
-    /**
-     * Gets the cell at the specified row and column.
-     *
-     * @param row The row of the cell
-     * @param col The column of the cell
-     * @return The CellBase instance at the given position
-     */
+
+
+
     public CellBase getCell(int row, int col) {
         return cells[row][col];
     }
 
-    /**
-     * Sets the GameView instance for the controller.
-     *
-     * @param gameView The GameView to set
-     */
+
+
+
     public void setGameView(GameView gameView) {
         this.gameView = gameView;
     }
 
-    /**
-     * Gets the current GameView instance.
-     *
-     * @return The GameView instance
-     */
+
+
+
     public GameView getGameView() {
         return gameView;
     }
 
-    /**
-     * Gets the Player object for the winner based on the token.
-     *
-     * @param token The token of the winner ('X' or 'O')
-     * @return The winning Player
-     */
+
+
+
     public Player getWinner(char token) {
         return (token == 'X') ? playerX : playerO;
     }
 
-    /**
-     * Updates the leaderboard with the results of the game and displays the leaderboard.
-     *
-     * @param token The token of the winning player ('X' or 'O')
-     */
+
+
+
     public void updateLeaderboard(char token) {
         Player winner = getWinner(token);
         Player loser = (token == 'X') ? playerO : playerX;
+
+
+
 
         for (Player player : players) {
             if (player.getUsername().equals(winner.getUsername())) {
@@ -177,9 +135,15 @@ public class GameController {
             }
         }
 
+
+
+
         PlayerDataController.savePlayers(players);
 
-        // Build leaderboard details
+
+
+
+        // Show leaderboard with average time per move
         StringBuilder leaderboardDetails = new StringBuilder();
         for (Player player : players) {
             double avgTime = gameTimer.getAverageTimePerMove(player.getUsername());
@@ -187,6 +151,18 @@ public class GameController {
                     player.getUsername(), player.getWins(), player.getLosses(), avgTime));
         }
 
+
+
+
         LeaderboardPopup.showLeaderboard(players);
     }
 }
+
+
+
+
+
+
+
+
+

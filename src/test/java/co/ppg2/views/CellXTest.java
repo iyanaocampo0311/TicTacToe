@@ -21,3 +21,4 @@ class CellXTest {
         assertNotNull(cell, "CellX instance should be created");
     }
 }
+

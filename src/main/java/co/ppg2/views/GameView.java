@@ -34,6 +34,7 @@ public class GameView {
 
 
 
+
         labelInstructions = new LabelInstructions(gameController.getCurrentPlayer().getUsername() + "'s turn");
 
 

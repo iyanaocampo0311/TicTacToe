@@ -1,5 +1,6 @@
 package co.ppg2.views;
 
+import co.ppg2.views.CellBase;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,3 +17,5 @@ class CellBaseTest {
         assertEquals(' ', cell.getToken());
     }
 }
+
+

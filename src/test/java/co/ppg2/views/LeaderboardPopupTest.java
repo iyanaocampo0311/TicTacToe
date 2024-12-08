@@ -15,8 +15,7 @@ class LeaderboardPopupTest {
     @BeforeAll
     static void initJavaFX() {
         // Initialize JavaFX toolkit
-        Platform.startup(() -> {
-        });
+        Platform.startup(() -> {});
     }
 
 

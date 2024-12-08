@@ -9,9 +9,7 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.BorderWidths;
 
-/**
- * Represents an empty cell in the TicTacToe grid. Handles user interaction and updates the game state and view.
- */
+
 public class CellEmpty extends CellBase {
     private static final int CELL_SIZE = 100;
     private final int row;
@@ -19,23 +17,18 @@ public class CellEmpty extends CellBase {
     private final GameController gameController;
     private final GameView gameView;
 
-    /**
-     * Constructs an empty cell for the TicTacToe grid.
-     *
-     * @param gameController the game controller managing the game logic
-     * @param gameView       the game view managing the GUI
-     * @param row            the row index of the cell
-     * @param col            the column index of the cell
-     */
+
     public CellEmpty(GameController gameController, GameView gameView, int row, int col) {
         this.gameController = gameController;
         this.gameView = gameView;
         this.row = row;
         this.col = col;
 
+
         Rectangle rect = new Rectangle(CELL_SIZE, CELL_SIZE);
         rect.setFill(Color.LIGHTGRAY);
         this.getChildren().add(rect);
+
 
         this.setBorder(new Border(
                 new BorderStroke(
@@ -46,8 +39,10 @@ public class CellEmpty extends CellBase {
                 )
         ));
 
+
         this.setOnMouseClicked(e -> handleMouseClick());
     }
+
 
     @Override
     public void setToken(char token) {
@@ -59,15 +54,12 @@ public class CellEmpty extends CellBase {
             this.getChildren().add(new CellO());
         }
     }
-
-    /**
-     * Handles the mouse click event for the cell, updating the game state and view.
-     */
     private void handleMouseClick() {
         if (token == ' ') {
             char currentPlayerToken = gameController.getWhoseTurn();
             gameController.setCell(row, col, this); // Update game state
             setToken(currentPlayerToken);  // Update display
+
 
             // Check for win or tie condition
             if (gameController.isWon(currentPlayerToken)) {
@@ -81,3 +73,4 @@ public class CellEmpty extends CellBase {
         }
     }
 }
+

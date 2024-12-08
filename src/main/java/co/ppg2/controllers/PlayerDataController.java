@@ -4,11 +4,16 @@ import co.ppg2.model.Player;
 import java.io.*;
 import java.util.ArrayList;
 
+    //TODO: Write a JavaDoc explaining the primary function of the class
+
 
 public class PlayerDataController {
 
 
     private static final String FILE_NAME = "players.dat";
+
+    //TODO: Create a JavaDoc explaining the savePlayers method
+
     public static void savePlayers(ArrayList<Player> players) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
             oos.writeObject(players);
@@ -17,6 +22,7 @@ public class PlayerDataController {
         }
     }
 
+    //TODO: Create a JavaDoc explaining the loadPlayers method
 
     public static ArrayList<Player> loadPlayers() {
         ArrayList<Player> players = new ArrayList<>();

@@ -15,24 +15,16 @@ public class LeaderboardPopup {
         VBox vbox = new VBox();
         Label label = new Label("Leaderboard:");
 
-
-
-
         ListView<String> listView = new ListView<>();
 
-
-
-
+        // TODO: Add a check if there are no players
         players.stream()
-                .sorted((p1, p2) -> Integer.compare(p2.getWins(), p1.getWins()))
-                .limit(10)
+                .sorted((p1, p2) -> Integer.compare(p2.getWins(), p1.getWins())) // Sort players by wins
+                .limit(10) // Show only top 10 players
                 .forEach(player -> {
                     double avgTime = Main.gameTimer.getAverageTimePerMove(player.getUsername()); // Get average time
                     listView.getItems().add(player + String.format(", Avg Time: %.2f seconds", avgTime));
                 });
-
-
-
 
         vbox.getChildren().addAll(label, listView);
         Scene scene = new Scene(vbox, 300, 300);
@@ -41,6 +33,3 @@ public class LeaderboardPopup {
         popupStage.showAndWait();
     }
 }
-
-
-

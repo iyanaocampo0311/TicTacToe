@@ -189,4 +189,7 @@ public class GameController {
 
         LeaderboardPopup.showLeaderboard(players);
     }
+
+    public void resetGame() {
+    }
 }

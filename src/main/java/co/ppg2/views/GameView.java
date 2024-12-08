@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 /**
  * Represents the graphical interface for the TicTacToe game.
@@ -44,6 +45,10 @@ public class GameView {
 
         labelInstructions = new LabelInstructions(gameController.getCurrentPlayer().getUsername() + "'s turn");
 
+        // Create the reset button
+        Button resetButton = new Button("Reset");
+        resetButton.setOnAction(e -> resetGame());
+
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(gridPane);
         borderPane.setBottom(labelInstructions);
@@ -52,6 +57,11 @@ public class GameView {
         primaryStage.setTitle("TicTacToe");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    private void resetGame() {
+        gameController.resetGame(); // Assuming gameController has a reset logic
+        launchGame(); // Relaunch the game UI
     }
 
     /**

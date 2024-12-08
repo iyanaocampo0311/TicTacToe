@@ -20,7 +20,6 @@ public class GameController {
     private GameTimer gameTimer;
     private GameView gameView;
     private final ArrayList<Player> players;
-
     /**
      * Constructor for GameController.
      *

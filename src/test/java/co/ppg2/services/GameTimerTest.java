@@ -1,5 +1,7 @@
 package co.ppg2.services;
 
+
+import co.ppg2.services.GameTimer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -46,3 +48,4 @@ class GameTimerTest {
                 "Average time per move should be 0.0 before the timer starts");
     }
 }
+

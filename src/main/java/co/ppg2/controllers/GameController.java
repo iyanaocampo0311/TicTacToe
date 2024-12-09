@@ -160,10 +160,10 @@ public class GameController {
 
 
 
-        //TODO: Remove excess space so you dont have to scroll that much
-        //TODO: Maybe make a button that reset the game so you don't have to keep reopening the game or just make it automatically do it
 
 
 
 
+//TODO: Remove excess space so you dont have to scroll that much
+//TODO: Maybe make a button that reset the game so you don't have to keep reopening the game or just make it automatically do it
 

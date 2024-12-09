@@ -39,8 +39,8 @@ public class GameView {
         borderPane.setCenter(gridPane);
         borderPane.setBottom(labelInstructions);
 
-
-        Scene scene = new Scene(borderPane, 450, 170);
+//I think i fixed the screen size so that it fits the entire screen
+        Scene scene = new Scene(borderPane, 450, 450);
         primaryStage.setTitle("TicTacToe");
         primaryStage.setScene(scene);
         primaryStage.show();

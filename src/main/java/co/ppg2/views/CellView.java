@@ -7,7 +7,6 @@ import javafx.scene.layout.StackPane;
 
 
 public class CellView extends StackPane {
-    //probably change something to let the screen size to fit or have the entire screen
     private final Button button;
     private final int row;
     private final int col;

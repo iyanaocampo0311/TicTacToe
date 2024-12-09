@@ -20,7 +20,6 @@ public class GameController {
     private GameTimer gameTimer;
     private GameView gameView;
     private final ArrayList<Player> players;
-
     /**
      * Constructor for GameController.
      *
@@ -165,7 +164,12 @@ public class GameController {
      *
      * @param token The token of the winning player ('X' or 'O')
      */
-    public void updateLeaderboard(char token) {
+    /**
+     * Updates the player statistics after the game ends.
+     *
+     * @param token The token of the winning player ('X' or 'O')
+     */
+    public void updatePlayerStats(char token) {
         Player winner = getWinner(token);
         Player loser = (token == 'X') ? playerO : playerX;
 
@@ -176,6 +180,26 @@ public class GameController {
                 player.incrementLosses();
             }
         }
+
+        PlayerDataController.savePlayers(players); // Persist updated player data
+    }
+
+    /**
+     * Displays the leaderboard popup with updated statistics.
+     */
+    public void displayLeaderboard() {
+        StringBuilder leaderboardDetails = new StringBuilder();
+
+        for (Player player : players) {
+            double avgTime = gameTimer.getAverageTimePerMove(player.getUsername());
+            leaderboardDetails.append(String.format("%s - Wins: %d, Losses: %d, Avg Time: %.2f seconds\n",
+                    player.getUsername(), player.getWins(), player.getLosses(), avgTime));
+        }
+
+        LeaderboardPopup.showLeaderboard(players); // Display the leaderboard UI
+    }
+// TODO What should be improved: The updateLeaderboard method mixes leaderboard update logic with UI generation, which violates the single-responsibility principle.
+        //TODO How it should be improved:  Split this method into two: one for updating player stats and another for generating the leaderboard display.
 
         PlayerDataController.savePlayers(players);
 

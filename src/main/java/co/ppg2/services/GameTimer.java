@@ -2,7 +2,8 @@ package co.ppg2.services;
 
 import javafx.application.Platform;
 
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
+
 import java.util.Map;
 
 /**
@@ -15,12 +16,12 @@ public class GameTimer implements Runnable {
     /**
      * Stores the total time spent by each player in milliseconds.
      */
-    private final Map<String, Long> playerTotalTime;
+    private final ConcurrentHashMap<String, Long> playerTotalTime;
 
     /**
      * Stores the number of moves made by each player.
      */
-    private final Map<String, Integer> playerMoves;
+    private final ConcurrentHashMap<String, Integer> playerMoves;
 
     /**
      * The name of the current player whose time is being tracked.
@@ -35,14 +36,17 @@ public class GameTimer implements Runnable {
     /**
      * Indicates whether the timer is currently running.
      */
-    private boolean running;
+    private volatile boolean running; // Use volatile for visibility across threads
+
 
     /**
      * Initializes a new {@link GameTimer} instance with no active players or timing data.
      */
+    //TODO What you should improve: playerTotalTime and playerMoves are modified in synchronized methods, but the run method isn't synchronized, which might lead to inconsistent states in multithreaded environments.
+    //TODO How to improve it: Wrap access to shared resources (playerTotalTime, playerMoves) in synchronized blocks or use a thread-safe structure like ConcurrentHashMap. And this will ensure thread saftey.
     public GameTimer() {
-        playerTotalTime = new HashMap<>();
-        playerMoves = new HashMap<>();
+        playerTotalTime = new ConcurrentHashMap<>();
+        playerMoves = new ConcurrentHashMap<>();
         running = false;
     }
 

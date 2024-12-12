@@ -26,7 +26,7 @@ public class GameView {
         this.gameController = gameController;
         this.primaryStage = primaryStage;
     }
-
+//TODO:align the the game board horizontally and vertically
     /**
      * Launches the game interface and initializes the game grid.
      */
@@ -47,7 +47,7 @@ public class GameView {
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(gridPane);
         borderPane.setBottom(labelInstructions);
-
+//TODO:have timer on screen while playing
         Scene scene = new Scene(borderPane, 450, 170);
         primaryStage.setTitle("TicTacToe");
         primaryStage.setScene(scene);

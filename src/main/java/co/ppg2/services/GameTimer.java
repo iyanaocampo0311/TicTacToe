@@ -76,6 +76,7 @@ public class GameTimer implements Runnable {
      * @param playerName the name of the player whose average move time is to be calculated
      * @return the average time per move in seconds, or 0.0 if the player has made no moves
      */
+    //TODO: include when a player has no possible moves
     public synchronized double getAverageTimePerMove(String playerName) {
         long totalTime = playerTotalTime.getOrDefault(playerName, 0L);
         int moves = playerMoves.getOrDefault(playerName, 0);

@@ -35,6 +35,9 @@ public class PlayerDataController {
      *
      * @return a list of {@link Player} objects loaded from the file
      */
+
+    //TODO: create a java doc for this explaining Loadplayers method
+
     public static ArrayList<Player> loadPlayers() {
         ArrayList<Player> players = new ArrayList<>();
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {

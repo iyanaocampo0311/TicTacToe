@@ -1,5 +1,7 @@
 package co.ppg2.controllers;
 
+//TODO: remove extra white space for quality of life
+
 import co.ppg2.services.GameTimer;
 import co.ppg2.model.Player;
 import co.ppg2.views.CellBase;
@@ -7,7 +9,7 @@ import co.ppg2.views.GameView;
 import co.ppg2.views.LeaderboardPopup;
 
 import java.util.ArrayList;
-
+//TODO: make JavaDocs telling the purpose of this
 /**
  * The GameController class handles the logic and state of the Tic-Tac-Toe game,
  * including player turns, game board, win conditions, and leaderboard updates.
